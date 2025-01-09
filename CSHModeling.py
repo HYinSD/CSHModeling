@@ -9,7 +9,7 @@ import tkinter as tk
 import numpy as np
 import random
 # Modification item
-Cao = 1.05
+Cao = 2
 
 #
 X_time = 2
@@ -32,6 +32,13 @@ if Cao ==2:
     coordinate[mask, 3] += 0.64
     mask = (coordinate[:, 3] == 1.05)
     coordinate[mask, 3] += 0.31
+    
+####################
+if Cao ==1.36:
+    mask = (coordinate[:, 3] == 1.36)
+    coordinate[mask, 3] += 0.64
+    mask = (coordinate[:, 3] == 1.05)
+    coordinate[mask, 3] += 0.31    
 # Cell Expansion
 Expansion = np.array([[0,0,0,0],
                   [0,0,0,0]])
@@ -78,8 +85,8 @@ def submit():
             else:
                 return None
             N1 = round((144 / CS) * Q0)
-            N5 = round(((144 / CS) * Q2) / 3)
-            N2 = round((((144 / CS) * Q1) - 2 * N5) / 2)
+            N2 = round(((144 / CS) * Q2) / 3)
+            N5 = round((((144 / CS) * Q1) - 2 * N2) / 2)
 
             return N1, N2, N5
         N1, N2, N5 = calculate_values(CS)  
@@ -351,6 +358,10 @@ def submit():
                   np.where(col == Cao, 5,0)))))
         end = np.insert(end, 2, new_col, axis=1)
         #########################################################################
+        
+        print(q1matrices)
+        print(q2matrices)
+        print(q5matrices)
         # File Export
         np.savetxt('output.data', end,fmt='%7.0f %6.0f %3.0f %9.6f %15.9f %15.9f %15.9f',delimiter=' ')
         with open('output.data', 'r') as f:
@@ -388,4 +399,4 @@ def submit():
 button = tk.Button(root, text="OK", command=submit)
 button.pack(pady=20)
 
-root.mainloop()  
+root.mainloop()
