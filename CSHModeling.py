@@ -85,8 +85,8 @@ def submit():
             else:
                 return None
             N1 = round((144 / CS) * Q0)
-            N2 = round(((144 / CS) * Q2) / 3)
-            N5 = round((((144 / CS) * Q1) - 2 * N2) / 2)
+            N5 = round(((144 / CS) * Q2) / 3)
+            N2 = round((((144 / CS) * Q1) - 2 * N5) / 2)
 
             return N1, N2, N5
         N1, N2, N5 = calculate_values(CS)  
