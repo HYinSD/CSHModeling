@@ -291,7 +291,7 @@ def submit():
         ca = Expansion[cs]
         ca1 = Expansion[cs1]
         ca = np.append(ca1,ca,axis = 0)
-        num_rows_to_delete = 40
+        num_rows_to_delete = 24
         rows_to_delete = np.random.choice(ca.shape[0], num_rows_to_delete, replace=False)
         ca = np.delete(ca, rows_to_delete, axis=0)
         cad = np.sum(ca[:,3],axis = 0)
